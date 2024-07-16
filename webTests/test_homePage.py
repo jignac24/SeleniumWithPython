@@ -11,5 +11,6 @@ class Test_HomePage(BaseTest):
         self.homepage = HomePage(self.driver)
         assert self.homepage.get_page_title() == TestData.PageTitle
 
-
-
+    def test_radioButton(self) -> None:
+        self.homepage = HomePage(self.driver)
+        self.homepage.get_radio_button()

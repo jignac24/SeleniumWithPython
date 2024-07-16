@@ -23,10 +23,14 @@ class BasePage:
         WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(by_locator)).send_keys(text)
 
     def element_enabled(self, by_locator) -> bool:
-        element = WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(by_locator))
+        element = WebDriverWait(self.driver,10).until(EC.p(by_locator))
         return element.is_enabled()
 
     def select_dropdown(self, by_locator, value):
         element = WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(by_locator))
         select = Select(element)
         select.select_by_value(value)
+
+    def get_radioButton(self, by_locator):
+        element = WebDriverWait(self.driver, 15).until(EC.presence_of_all_elements_located(by_locator))
+        return element
